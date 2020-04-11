@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { TextInput, Button, Icon } from "react-materialize";
-import "./form.css";
+import "./loginForm.css";
 
 export default class LoginForm extends Component {
   constructor(props) {
