@@ -21,3 +21,10 @@ it("renders without crashing", () => {
   const div = document.createElement("div");
   ReactDOM.render(<LoginForm />, div);
 });
+
+it("mock localstorage", () => {
+  const spy = jest.spyOn(Storage.prototype, "setItem");
+  localStorage.setItem = spy;
+  localStorage.setItem("foo", "bar");
+  expect(spy).toHaveBeenCalledTimes(1);
+});
