@@ -1,27 +1,29 @@
 version: '3'
 
-#volumes:
-#  pgdata:
+volumes:
+  pgdata:
 
 services:
-  python:
+  cards-api:
     build:
       context: .
       dockerfile: docker/python/Dockerfile
-    command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/app
     ports:
       - "8000:8000"
-  db:
+    depends_on:
+      - cards-postgres
+    restart: on-failure
+  cards-postgres:
     image: postgres:9.5
     environment:
       POSTGRES_USER: cards
       POSTGRES_DB: cards
-      POSTGRES_PASS: cards
+      POSTGRES_PASSWORD: cards
       POSTGRES_HOST_AUTH_METHOD: "trust"
-#    volumes:
-#      - pgdata:/var/lib/postgresql/data
+    volumes:
+      - pgdata:/var/lib/postgresql/data
     ports:
       - 5432
 

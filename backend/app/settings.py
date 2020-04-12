@@ -78,7 +78,7 @@ DATABASES = {
         'NAME': 'cards',
         'USER': 'cards',
         'PASSWORD': 'cards',
-        'HOST': 'db',
+        'HOST': 'cards-postgres',
         'PORT': '5432',
     }
 }
