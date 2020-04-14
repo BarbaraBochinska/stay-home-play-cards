@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { TextInput, Button, Icon } from "react-materialize";
+import { Link } from "react-router-dom";
+
 import "./loginForm.css";
 
 export default class LoginForm extends Component {
@@ -7,6 +9,7 @@ export default class LoginForm extends Component {
     super(props);
     this.saveUsername = this.saveUsername.bind(this);
     this.updateState = this.updateState.bind(this);
+    this.handleClick = this.handleClick.bind(this);
 
     this.state = {
       username: ""
@@ -15,6 +18,10 @@ export default class LoginForm extends Component {
 
   updateState(event) {
     this.setState({ username: event.target.value });
+  }
+
+  handleClick() {
+    this.saveUsername();
   }
 
   saveUsername() {
@@ -26,15 +33,17 @@ export default class LoginForm extends Component {
       <div className="center form-box login border">
         <TextInput onChange={this.updateState} label="Username" />
         <div className="center">
-          <Button
-            node="button"
-            type="submit"
-            waves="light"
-            onClick={this.saveUsername}
-          >
-            Play
-            <Icon right>send</Icon>
-          </Button>
+          <Link to="/table">
+            <Button
+              node="button"
+              type="submit"
+              onClick={this.handleClick}
+              className="deep-purple"
+            >
+              Play
+              <Icon right>send</Icon>
+            </Button>
+          </Link>
         </div>
       </div>
     );
