@@ -38,7 +38,7 @@ export default class LoginForm extends Component {
               node="button"
               type="submit"
               onClick={this.handleClick}
-              className="light-blue accent-4"
+              className="deep-purple"
             >
               Play
               <Icon right>send</Icon>
