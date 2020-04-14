@@ -8,8 +8,6 @@ services:
     build:
       context: .
       dockerfile: docker/python/Dockerfile
-    volumes:
-      - .:/app
     ports:
       - "8000:8000"
     depends_on:
@@ -25,5 +23,5 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
     ports:
-      - 5432
+      - 5433:5432
 
